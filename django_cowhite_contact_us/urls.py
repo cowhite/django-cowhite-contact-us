@@ -7,5 +7,7 @@ from .views import ContactView
 
 urlpatterns = [
     url(r'^$', ContactView.as_view(), name="contact-us"),
-    url(r'^success/$', TemplateView.as_view(template_name="django_cowhite_contact_us/success.html")),
+    url(r'^success/$',
+        TemplateView.as_view(template_name="django_cowhite_contact_us/success.html"),
+        name="success"),
 ]
