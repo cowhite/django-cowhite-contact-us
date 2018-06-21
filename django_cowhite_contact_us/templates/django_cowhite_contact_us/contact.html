@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block meta_title %}
+Contact Us
+{% endblock %}
+
+{% block content %}
+<h1>Contact Us</h1>
+<form method="post">
+{% csrf_token %}
+
+  <div class='row'>
+    <div class='col-md-6 offset-md-3'>
+
+      <div class="mb-2">
+        {{ form.name.errors }}
+        <input type="text" name="name" placeholder="Name" class="form-control" value="{{ form.name.value|default:'' }}">
+      </div>
+      <div class="mb-2">
+        {{ form.email.errors }}
+
+        <input type="email" name="email" placeholder="Email" class="form-control" value="{{ form.email.value|default:'' }}">
+      </div>
+      <div class="mb-2">
+        {{ form.subject.errors }}
+
+        <input type="text" name="subject" placeholder="Subject" class="form-control" value="{{ form.subject.value|default:'' }}">
+      </div>
+
+      <div class="mb-2">
+        {{ form.message.errors }}
+
+        <textarea name="message" class="form-control" placeholder="Message">{{ form.message.value|default:'' }}</textarea>
+      </div>
+
+      <div style="margin-right: 12px" class="mb-2 pull-right g-recaptcha" data-sitekey="{{ CAPTCHA_KEY }}"></div>
+
+      {{ form.captcha.errors }}
+
+      <input type='submit' class='btn btn-primary' value='Contact Us' />
+    </div>
+  </div>
+</form>
+{% endblock %}
+
+{% block jslib %}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
