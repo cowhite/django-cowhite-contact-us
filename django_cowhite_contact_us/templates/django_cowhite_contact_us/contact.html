@@ -5,13 +5,13 @@ Contact Us
 {% endblock %}
 
 {% block content %}
-<h1>Contact Us</h1>
-<form method="post">
-{% csrf_token %}
+<div class='row'>
+  <div class='col-md-6 offset-md-3'>
 
-  <div class='row'>
-    <div class='col-md-6 offset-md-3'>
+    <h1>Contact Us</h1>
 
+    <form method="post">
+    {% csrf_token %}
       <div class="mb-2">
         {{ form.name.errors }}
         <input type="text" name="name" placeholder="Name" class="form-control" value="{{ form.name.value|default:'' }}">
@@ -38,9 +38,10 @@ Contact Us
       {{ form.captcha.errors }}
 
       <input type='submit' class='btn btn-primary' value='Contact Us' />
-    </div>
+
+    </form>
   </div>
-</form>
+</div>
 {% endblock %}
 
 {% block jslib %}
