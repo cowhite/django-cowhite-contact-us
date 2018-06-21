@@ -11,11 +11,11 @@ class Command(BaseCommand):
     help = 'Send mail for every new instance to ContactUs model.'
 
     def handle(self, *args, **options):
-        contacts = Contact.objects.filter(mail_sent=False)
+        contacts = ContactUs.objects.filter(mail_sent=False)
         for contact in contacts:
             subject = render_to_string("django_cowhite_contact_us/contact_email_subject.txt")
 
             body = render_to_string("django_cowhite_contact_us/contact_email_body.html", {"obj": contact})
-            send_mail(subject, "", html_message=body)
+            mail_admins(subject, "", html_message=body)
             contact.mail_sent = True
             contact.save()

@@ -3,6 +3,8 @@ from django.conf import settings
 
 from .models import ContactUs
 
+import requests
+
 
 class ContactForm(forms.ModelForm):
     captcha = forms.CharField(required=False)
